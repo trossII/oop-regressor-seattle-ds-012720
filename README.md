@@ -17,9 +17,41 @@ Your task today is to create a new class, `MeanRegressor`, which implements a si
     - `X` is a two-dimensional matrix and `y` is a list of target variables
     - This method will compute the R<sup>2</sup> for how well the features of `X` are able to predict the target of `y`.  As a reminder, R<sup>2</sup> is calculated as 1 - `residual sum of squares`/`total sum of squares`, where `residual sum of squares` is the sum of all ((y_true - y_pred)<sup>2</sup>) and `total sum of squares` is the sum of all ((y_true - y_pred.mean())<sup>2</sup>).  So, if you are scoring with the same `y` that was used for the `fit`, you should expect the score to be exactly zero.
 
-These requirements have test coverage.  To run the tests, run `pytest` in bash from the root of this repository.  There should be an initial print-out saying that you failed all 5 tests.  Re-run `pytest` as you implement the requirements, and eventually they should all pass.
+## Getting Started with Test-Driven Development
 
-## Hints
+We recommend that you attempt this entire exercise in VS Code or some other text editor, without using Jupyter Notebook or Jupyter Lab.
+
+This is a test-driven exercise, so your first step is to run the full test suite.  You probably do not have PyTest installed, so you probably need to run the following command in Bash, after activating a Conda environment (e.g. `learn-env`):
+
+```
+conda install pytest
+```
+
+Then once you have installed PyTest, run the following command in Bash, from the root of this repository:
+
+```
+pytest
+```
+
+You should get a long print-out saying that you failed 5 out of 5 tests.  All of the error messages should say:
+
+```
+ModuleNotFoundError: No module named 'mean_regressor'
+```
+
+This means that you need to create a module named "mean_regressor".  In other words, you need to make a file in the root of the repository called `mean_regressor.py`.
+
+Once you've created this file, run `pytest` again.  You should still be failing all five tests, but now the error message should be different.  Now it should say something like:
+
+```
+ImportError: cannot import name 'MeanRegressor' from 'mean_regressor'
+```
+
+This means that you need to create a class `MeanRegressor` in `mean_regressor.py`.  Once you do this, you should now be passing 1 out of the 5 tests.  (The output at the bottom should say `4 failed, 1 passed`.)
+
+Now, continue looking at the requirements and the test outputs and modifying your code until you are passing all five tests.
+
+## Hint
 
 You will need at least one attribute (AKA member variable) to make your `MeanRegressor` work.  One option would be storing some information about model fit that you manually create, and another option would be instantiating a [DummyRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.dummy.DummyRegressor.html) and passing user inputs into it.
 
